@@ -24,7 +24,10 @@ yarn start
 ```
 
 Then open your browser and navigate to:
-http://localhost:3000
+> http://localhost:3000
+
+The deployed NEAR AI Agent can be accessed at the following URL:
+> https://app.near.ai/agents/redsite5429.near/bluecats_agent/latest
 
 ## Environment File
 
