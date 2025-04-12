@@ -7,15 +7,22 @@ decentralized AI marketing solution
 
 (built for the BuidlAI 2025 Hackathon)
 
+<br>
+
 ## How to run
 
+### BackEnd & Database
 Build and run the BackEnd & Database application stack using Docker Compose:
 
 ```bash
 docker compose up -d --build
 ```
 
-Run the following commands to start the Frontend:
+<br>
+
+### FrontEnd
+
+Run the following commands to start the Frontend demo:
 
 ```bash
 cd /bluecats_fe
@@ -26,12 +33,20 @@ yarn start
 Then open your browser and navigate to:
 > http://localhost:3000
 
+<br>
+
+### AI Agent
+
 The deployed NEAR AI Agent can be accessed at the following URL:
 > https://app.near.ai/agents/redsite5429.near/bluecats_agent/latest
+
+<br>
 
 ## Environment File
 
 Add your API key to the .env file, using the provided example as a reference.
+
+<br>
 
 ## Architecture Overview
 
