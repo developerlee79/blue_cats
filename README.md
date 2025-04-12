@@ -1,35 +1,34 @@
 # Whiplash
 
-BuidlAI 2025 Project
-
 A more affordable, 
 more understanding, 
 and sovereign 
 decentralized AI marketing solution
 
+(built for the BuidlAI 2025 Hackathon)
+
 ## How to run
 
-BackEnd & Database - Use Docker
+Build and run the BackEnd & Database application stack using Docker Compose:
 
-Build and run the application stack using Docker Compose
-
-```script
+```bash
 docker compose up -d --build
 ```
 
-FrontEnd - Run commands
+Run the following commands to start the Frontend:
 
-```script
+```bash
 cd /bluecats_fe
 yarn install
 yarn start
 ```
 
-Go to http://localhost:3000
+Then open your browser and navigate to:
+http://localhost:3000
 
 ## Environment File
 
-Enter API Key in the .env environment variable file given as an example
+Add your API key to the .env file, using the provided example as a reference.
 
 ## Architecture Overview
 
