@@ -62,7 +62,7 @@ The structured output is persisted in a PostgreSQL database and serves as the co
 
 ![2](https://github.com/user-attachments/assets/303b5d19-202a-40f7-a9e6-8db26f1385a7)
 
-** Web3 Wallet Authentication System & Document-based user context profiling (services and companies) for tailored marketing recommendations **
+**Web3 Wallet Authentication System & Document-based user context profiling (services and companies) for tailored marketing recommendations**
 
 Privacy-preserving wallet login enables users to access business services without exposing any personally identifiable information (PII), ensuring both anonymity and secure authentication.
 
@@ -72,7 +72,7 @@ This contextual understanding is then used to generate personalized marketing da
 
 ![3](https://github.com/user-attachments/assets/e735bdf9-5131-48af-b684-6ea23854f192)
 
-** Providing Personalized Marketing Solutions by Integrating User Context with the Latest Trend Data Using LLM-Powered AI Agent **
+**Providing Personalized Marketing Solutions by Integrating User Context with the Latest Trend Data Using LLM-Powered AI Agent**
 
 This system uses an LLM AI Agent deployed on NEAR.AI to generate personalized marketing outputs by combining:
 
