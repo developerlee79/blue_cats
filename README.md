@@ -82,6 +82,21 @@ Real-time trend data, crawled from online communities like Reddit and X
 
 The AI Agent matches semantic elements from both sources — such as service domain, product focus, and trend topics — to produce structured data that can be used in context-aware marketing workflows.
 
+## Future Development Roadmap
+
+**Multi-Platform Trend Collection**
+
+Currently, the trend data pipeline relies solely on Reddit. In future iterations, we plan to extend our crawling infrastructure to support additional platforms such as X (formerly Twitter) and other high-signal online communities, to broaden the scope and diversity of trend sources.
+
+**Advanced Trend Intelligence Features**
+
+Beyond presenting raw trend data, we aim to develop features that help content marketers and strategists better understand the lifecycle and origin of each trend. Planned capabilities include:
+
+- Estimating trend longevity and saturation
+- Identifying original sources and propagation paths
+- Providing automated research summaries for deeper insight
+- 
+These enhancements are designed to support data-driven creative decisions, especially for teams that require context-aware content direction and timely market insights.
 
 
 
