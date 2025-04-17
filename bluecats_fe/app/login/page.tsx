@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect } from "react"
-import Navbar from "@/components/navbar"
+import Navbar from "../../../../../../Downloads/blue_cat-main/components/navbar"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 
@@ -10,7 +10,6 @@ export default function LoginPage() {
   const companyName = "Blah Blah"
 
   useEffect(() => {
-    // Simulate redirect after 3 seconds
     const timer = setTimeout(() => {
       router.push("/dashboard")
     }, 3000)
@@ -20,10 +19,7 @@ export default function LoginPage() {
 
   return (
     <main className="min-h-screen flex flex-col relative overflow-hidden">
-      <Navbar
-        isConnected={true}
-        onConnectWallet={() => {}} // No-op since we're already connected
-      />
+      <Navbar isConnected={true} onConnectWallet={() => {}} />
 
       <div className="absolute inset-0 z-0 opacity-20">
         <Image src="/images/bluecat.png" alt="Background Logo" fill style={{ objectFit: "cover" }} priority />

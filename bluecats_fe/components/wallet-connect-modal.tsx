@@ -1,6 +1,8 @@
 "use client"
 
 import { useState } from "react"
+import { useConnect } from "wagmi"
+import { injected } from "wagmi/connectors"
 import { X } from "lucide-react"
 import Image from "next/image"
 
@@ -13,22 +15,22 @@ const wallets = [
   {
     id: "metamask",
     name: "MetaMask",
-    icon: "/placeholder.svg?height=40&width=40",
+    icon: "/placeholder.svg",
   },
   {
     id: "coinbase",
     name: "Coinbase Wallet",
-    icon: "/placeholder.svg?height=40&width=40",
+    icon: "/placeholder.svg",
   },
   {
     id: "walletconnect",
     name: "WalletConnect",
-    icon: "/placeholder.svg?height=40&width=40",
+    icon: "/placeholder.svg",
   },
   {
     id: "phantom",
     name: "Phantom",
-    icon: "/placeholder.svg?height=40&width=40",
+    icon: "/placeholder.svg",
   },
 ]
 
@@ -36,15 +38,28 @@ export default function WalletConnectModal({ onConnect, onClose }: WalletConnect
   const [connecting, setConnecting] = useState(false)
   const [selectedWallet, setSelectedWallet] = useState<string | null>(null)
 
-  const handleWalletSelect = (walletId: string) => {
+  const { connect } = useConnect()
+
+  const handleWalletSelect = async (walletId: string) => {
     setSelectedWallet(walletId)
     setConnecting(true)
-
-    // Simulate connection delay
-    setTimeout(() => {
-      onConnect()
-    }, 1500)
+  
+    try {
+      if (walletId === "metamask") {
+        const result = await connect({ connector: injected() })
+        console.log("✅ 연결 성공:", result)
+        onConnect()
+      } else {
+        alert(`${walletId} 연결은 아직 구현되지 않았습니다.`)
+      }
+    } catch (err) {
+      console.error("❌ 지갑 연결 실패:", err)
+      alert("지갑 연결에 실패했습니다. 혹시 메타마스크가 설치되어 있나요?")
+    } finally {
+      setConnecting(false)
+    }
   }
+  
 
   return (
     <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
@@ -71,13 +86,7 @@ export default function WalletConnectModal({ onConnect, onClose }: WalletConnect
                 className="w-full bg-[#2a2139] hover:bg-[#352a4a] transition-colors rounded-lg p-4 flex items-center"
                 onClick={() => handleWalletSelect(wallet.id)}
               >
-                <Image
-                  src={wallet.icon || "/placeholder.svg"}
-                  alt={wallet.name}
-                  width={40}
-                  height={40}
-                  className="mr-4"
-                />
+                <Image src={wallet.icon} alt={wallet.name} width={40} height={40} className="mr-4" />
                 <span>{wallet.name}</span>
               </button>
             ))}

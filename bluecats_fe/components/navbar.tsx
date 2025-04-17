@@ -9,12 +9,14 @@ interface NavbarProps {
   menuItems?: string[]
   isConnected: boolean
   onConnectWallet: () => void
+  onMenuClick?: (menu: string) => void // ✅ 추가
 }
 
 export default function Navbar({
   menuItems = ["Product", "About us", "Blog"],
   isConnected,
   onConnectWallet,
+  onMenuClick, // ✅ 추가
 }: NavbarProps) {
   return (
     <nav className="flex items-center justify-between py-6 px-8 md:px-12">
@@ -26,13 +28,13 @@ export default function Navbar({
 
       <div className="hidden md:flex items-center space-x-12">
         {menuItems.map((item) => (
-          <Link
+          <button
             key={item}
-            href={`/${item.toLowerCase().replace(/\s+/g, "-")}`}
+            onClick={() => onMenuClick?.(item)} // ✅ 클릭 시 부모로 전달
             className="text-white hover:text-primary transition-colors"
           >
             {item}
-          </Link>
+          </button>
         ))}
       </div>
 

@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import Navbar from "@/components/navbar"
+import Navbar from "../../../../../../Downloads/blue_cat-main/components/navbar"
 import { useRouter } from "next/navigation"
 
 export default function AnalysisPage() {

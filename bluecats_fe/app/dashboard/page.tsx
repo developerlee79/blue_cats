@@ -1,44 +1,57 @@
 "use client"
 
+import { useRouter } from "next/navigation"
 import { useState } from "react"
-import Navbar from "@/components/navbar"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
+import Navbar from "../../../../../../Downloads/blue_cat-main/components/navbar"
+import { Card, CardContent } from "../../../../../../Downloads/blue_cat-main/components/ui/card"
+import { Badge } from "../../../../../../Downloads/blue_cat-main/components/ui/badge"
+import { Input } from "../../../../../../Downloads/blue_cat-main/components/ui/input"
 import { Search } from "lucide-react"
-import TrendDetailModal from "@/components/trend-detail-modal"
+import TrendDetailModal from "../../../../../../Downloads/blue_cat-main/components/trend-detail-modal"
 
 const trendItems = [
   {
     id: 1,
     title: "#1 Vitalik's T-shirts at ETH Seoul",
     tags: ["Casual", "Meme", "Shitpost"],
-    content: "How about Upload on X with Image 합성 with your Logo with 비탈릭 티셔츠?",
+    content:
+      '<span style="color:black;">How about</span> <span style="color:blue;">Upload on X with generated image with your Logo tee?</span>',
   },
   {
     id: 2,
-    title: "#2 Near Update",
+    title: "#2. Speedrunning for meme coin",
     tags: ["Curate", "Tech", "Research"],
-    content: "How about Upload on X with Image 합성 with your Logo with 비탈릭 티셔츠?",
+    content:
+      '<span style="color:black;">How about</span> <span style="color:blue;">Try posting your own meme coin pitch with a fake roadmap made by AI?</span>',
   },
   {
     id: 3,
-    title: "#3 Near Update",
+    title: "#3. LARPing as AI Agent",
     tags: ["Curate", "Tech", "Research"],
-    content: "How about Upload on X with Image 합성 with your Logo with 비탈릭 티셔츠?",
+    content:
+      '<span style="color:black;">How about</span> <span style="color:blue;">Post your brand’s ‘AI persona’ generated name, icon, and vibes only?</span>',
   },
 ]
 
 export default function DashboardPage() {
+  const router = useRouter()
   const [selectedTrend, setSelectedTrend] = useState<(typeof trendItems)[0] | null>(null)
   const [searchQuery, setSearchQuery] = useState("")
+
+  const handleMenuClick = (menu: string) => {
+    const normalized = menu.toLowerCase().replace(/\s+/g, "-")
+    if (normalized === "about-you") {
+      router.push("/chat")
+    }
+  }
 
   return (
     <main className="min-h-screen flex flex-col">
       <Navbar
         menuItems={["TrendBoard", "Planning", "Stredgy", "About You"]}
         isConnected={true}
-        onConnectWallet={() => {}} // No-op since we're already connected
+        onConnectWallet={() => {}}
+        onMenuClick={handleMenuClick}
       />
 
       <div className="flex-1 flex flex-col px-8 md:px-12 py-8">
@@ -51,21 +64,22 @@ export default function DashboardPage() {
           {trendItems.map((item) => (
             <Card
               key={item.id}
-              className="bg-white text-black rounded-lg overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
+              className="bg-white text-black rounded-lg overflow-hidden cursor-pointer hover:shadow-lg transition-shadow min-h-[400px]"
               onClick={() => setSelectedTrend(item)}
             >
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold mb-4">{item.title}</h3>
-
                 <div className="flex flex-wrap gap-2 mb-6">
                   {item.tags.map((tag) => (
-                    <Badge key={tag} variant="outline" className="bg-gray-100">
+                    <Badge key={tag} variant="outline" className="bg-gray-100 text-black">
                       {tag}
                     </Badge>
                   ))}
                 </div>
-
-                <p className="text-gray-700">{item.content}</p>
+                <div
+                  className="text-gray-700"
+                  dangerouslySetInnerHTML={{ __html: item.content }}
+                />
               </CardContent>
             </Card>
           ))}

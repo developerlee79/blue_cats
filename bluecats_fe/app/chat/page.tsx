@@ -3,9 +3,9 @@
 import type React from "react"
 
 import { useState } from "react"
-import Navbar from "@/components/navbar"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
+import Navbar from "../../../../../../Downloads/blue_cat-main/components/navbar"
+import { Input } from "../../../../../../Downloads/blue_cat-main/components/ui/input"
+import { Button } from "../../../../../../Downloads/blue_cat-main/components/ui/button"
 import { Send } from "lucide-react"
 import Image from "next/image"
 
@@ -19,7 +19,7 @@ export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      content: "그래 뭐 원하는 방향 있어? 방향성이 수정되었어? 중요한 마일스톤이 생겼어? 등등...",
+      content: "Is there anything you’d like to revise? Has the direction shifted? Any key milestones we should know about?",
       sender: "bot",
     },
   ])
@@ -46,7 +46,7 @@ export default function ChatPage() {
     setTimeout(() => {
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
-        content: "알겠어. 그 방향으로 도와줄게. 더 구체적인 내용이 있으면 알려줘.",
+        content: "Got it. Want me to rework your positioning?.",
         sender: "bot",
       }
 
@@ -57,7 +57,7 @@ export default function ChatPage() {
   return (
     <main className="min-h-screen flex flex-col">
       <Navbar
-        menuItems={["TrendBoard", "Planning", "Stredgy", "About You"]}
+        menuItems={["TrendBoard", "Planning", "Strategy", "About You"]}
         isConnected={true}
         onConnectWallet={() => {}} // No-op since we're already connected
       />
@@ -82,7 +82,7 @@ export default function ChatPage() {
           <form onSubmit={handleSendMessage} className="flex gap-2">
             <Input
               className="bg-gray-800 text-white rounded-full py-6"
-              placeholder="응 어쩌고 저쩌고 입력"
+              placeholder="write you something to desire"
               value={input}
               onChange={(e) => setInput(e.target.value)}
             />
